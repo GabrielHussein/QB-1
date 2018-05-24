@@ -9,7 +9,6 @@ public class PlayerControler : MonoBehaviour {
     [SerializeField]
     float Velocidade;
     float fome, sede;
-    public int QuantidadesDeCarnes, QuantidadeDeAgua; 
 
 	// Use this for initialization
 	void Start ()
@@ -19,8 +18,6 @@ public class PlayerControler : MonoBehaviour {
         Velocidade = 1.90f;
         fome = 1;
         sede = 1;
-        QuantidadesDeCarnes = 0;
-
     }
 
     // Update is called once per frame
@@ -64,13 +61,11 @@ public class PlayerControler : MonoBehaviour {
         {
             vertical = 0;
         }
-        Player.velocity = new Vector2(horizontal * Velocidade,vertical*Velocidade);
-
-        
+        Player.velocity = new Vector2(horizontal * Velocidade,vertical*Velocidade);        
     }
 
     private void Update()
     {
-        Debug.Log(QuantidadesDeCarnes);
+        
     }
 }

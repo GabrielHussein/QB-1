@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114740934786350348}
   m_Layer: 0
   m_Name: Carne
-  m_TagString: Untagged
+  m_TagString: ItemInteragivel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,6 +68,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c970d99a000aed14d842d7a84d3814d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stay: 0
+  Player: {fileID: 0}
+  PlayerScript: {fileID: 0}
 --- !u!212 &212553915740649180
 SpriteRenderer:
   m_ObjectHideFlags: 1
