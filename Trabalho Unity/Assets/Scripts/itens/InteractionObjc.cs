@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class InteractionObjc : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public bool inventory; //Caso verdadeiro o item pode ser armazenado no inventario.
+	public void DoInterction()
+    {
+            gameObject.SetActive(false);  
+    }
 }

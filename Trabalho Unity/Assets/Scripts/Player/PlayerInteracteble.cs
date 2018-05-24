@@ -6,12 +6,25 @@ public class PlayerInteracteble : MonoBehaviour {
 
     [SerializeField]
     GameObject currentItemInter = null;
-
+    public InteractionObjc currentObjScript = null;
+    public PlayerInventory inventario;
+    public bool check = true;
     void Update()
     {
         if (Input.GetButtonDown("Interacao") && currentItemInter)
         {
-            currentItemInter.SendMessage("DoInterction");
+            if (currentObjScript.inventory)
+            {
+                inventario.AddItem(currentItemInter);
+                check = this.gameObject.GetComponent<PlayerInventory>().itemAdd;
+                if (check)
+                {
+                    currentObjScript.DoInterction();
+                    currentItemInter = null;
+                }
+                
+            }
+
         }
     }
 
@@ -21,6 +34,7 @@ public class PlayerInteracteble : MonoBehaviour {
         {
             Debug.Log(other.name);
             currentItemInter = other.gameObject;
+            currentObjScript = currentItemInter.GetComponent <InteractionObjc>();
         }
     }
 
@@ -28,7 +42,7 @@ public class PlayerInteracteble : MonoBehaviour {
     {
         if (other.CompareTag("ItemInteragivel"))
         {
-            if(other.gameObject == currentItemInter)
+            if (other.gameObject == currentItemInter)
             {
                 currentItemInter = null;
             }
