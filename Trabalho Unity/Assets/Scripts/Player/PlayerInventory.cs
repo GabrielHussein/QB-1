@@ -59,6 +59,7 @@ public class PlayerInventory : MonoBehaviour {
                 Array.Resize(ref inventory, 8);
                 itemAdd = true;
                 item.SendMessage("DoInterction");
+                this.GetComponent<SpriteRenderer>().sprite = Mochila;
                 Debug.Log(item.name + "foi adicionado assim aumentando o tamanho da capacidade para 8.");
             }
             else
