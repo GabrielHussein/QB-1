@@ -8,7 +8,9 @@ public class PlayerInventory : MonoBehaviour {
     public GameObject[] inventory;
     private GameObject[] icones;
     private GameObject ObjInventario;
+    public GameObject InventarioController;
     public Sprite Mochila;
+    public InventarioUI ResizeInv;
 
 
     private void Start()
@@ -16,6 +18,7 @@ public class PlayerInventory : MonoBehaviour {
         inventory = new GameObject[4];
         icones = new GameObject[4];
         ObjInventario = GameObject.Find("Painel");
+        ResizeInv = GameObject.Find("InventarioController").transform.GetComponent<InventarioUI>();
     }
     public bool itemAdd,mochilacheck = false;
     public void AddItem(GameObject item)
@@ -29,18 +32,19 @@ public class PlayerInventory : MonoBehaviour {
                 if (item.name == "mochila")
                 {
                     mochilacheck = true;
-                    Array.Resize(ref inventory, 8);
+                    Array.Resize(ref inventory, 8);           
+                    ResizeInv.ArrumarInv();
                     itemAdd = true;
                     item.SendMessage("DoInterction");
                     this.GetComponent<SpriteRenderer>().sprite = Mochila;
-                    Debug.Log(item.name + "foi adicionado assim aumentando o tamanho da capacidade para 8.");
+                    Debug.Log(item.name + " foi adicionado assim aumentando o tamanho da capacidade para 8.");
                     break;
                 }
 
                 inventory[i] = item;
                 itemAdd = true;
 
-                GameObject ImagenDoInventario = ObjInventario.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
+                GameObject ImagenDoInventario = ObjInventario.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject;
                 Image IconeItem = ImagenDoInventario.GetComponent<Image>();
                 IconeItem.sprite = item.GetComponent<SpriteRenderer>().sprite; 
 
@@ -57,10 +61,11 @@ public class PlayerInventory : MonoBehaviour {
             {
                 mochilacheck = true;
                 Array.Resize(ref inventory, 8);
+                ResizeInv.ArrumarInv();
                 itemAdd = true;
                 item.SendMessage("DoInterction");
                 this.GetComponent<SpriteRenderer>().sprite = Mochila;
-                Debug.Log(item.name + "foi adicionado assim aumentando o tamanho da capacidade para 8.");
+                Debug.Log(item.name + " foi adicionado assim aumentando o tamanho da capacidade para 8.");
             }
             else
             {

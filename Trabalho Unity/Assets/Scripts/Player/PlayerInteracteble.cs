@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerInteracteble : MonoBehaviour {
 
-    [SerializeField]
     GameObject currentItemInter = null;
     public InteractionObjc currentObjScript = null;
     public PlayerInventory inventario;

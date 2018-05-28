@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerControler.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteracteble.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInventory.cs" />
+    <Compile Include="Assets\Scripts\UI\Inventario\InventarioResize.cs" />
     <Compile Include="Assets\Scripts\UI\Inventario\InventarioUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />

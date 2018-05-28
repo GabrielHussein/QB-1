@@ -6,7 +6,15 @@ public class PlayerControler : MonoBehaviour {
 
     private Rigidbody2D Player;
     private SpriteRenderer Spr;
+    public GameObject painel;
+    RectTransform ConfigDoPainel;
+    PlayerInventory InventarioCheck;
+    public bool InvAberto;
+
     [SerializeField]
+    GameObject Inventario;
+    
+
     float Velocidade;
     float fome, sede;
 
@@ -15,6 +23,9 @@ public class PlayerControler : MonoBehaviour {
     {
         Player = GetComponent<Rigidbody2D>();
         Spr = GetComponent<SpriteRenderer>();
+        ConfigDoPainel = painel.GetComponent<RectTransform>();
+        InvAberto = false;
+        InventarioCheck = this.transform.GetComponent<PlayerInventory>();
         Velocidade = 1.90f;
         fome = 1;
         sede = 1;
@@ -61,11 +72,55 @@ public class PlayerControler : MonoBehaviour {
         {
             vertical = 0;
         }
-        Player.velocity = new Vector2(horizontal * Velocidade,vertical*Velocidade);        
+        Player.velocity = new Vector2(horizontal * Velocidade,vertical*Velocidade);
+
+        if ((Input.GetKeyDown("i")) && (!InvAberto))
+        {
+            int x;
+            if (InventarioCheck.mochilacheck)
+            {
+                x = 50;
+            }
+            else
+            {
+                x = 92;
+            }
+            StopCoroutine(AnimacaoDdoInventario(x));
+            StartCoroutine(AnimacaoSdoInventario(x));
+            InvAberto = true;
+        }
+        else if((Input.GetKeyDown("i")) && (InvAberto))
+        {
+            int x;
+            if (InventarioCheck.mochilacheck)
+            {
+                x = 50;
+            }
+            else
+            {
+                x = 92;
+            }
+            StopCoroutine(AnimacaoSdoInventario(x));
+            StartCoroutine(AnimacaoDdoInventario(x));
+            InvAberto = false;
+        }
     }
 
-    private void Update()
+    IEnumerator AnimacaoSdoInventario(int x)
     {
-        
+        for (float y = -84;y <= 34; y+=14.75f)
+        {
+            ConfigDoPainel.localPosition = new Vector2(x, y);
+            yield return new WaitForSeconds(0.000001f);
+        }
+    }
+
+    IEnumerator AnimacaoDdoInventario(int x)
+    {
+        for (float y = 34; y >= -84; y -= 14.75f)
+        {
+            ConfigDoPainel.localPosition = new Vector2(x, y);
+            yield return new WaitForSeconds(0.000001f);
+        }
     }
 }
